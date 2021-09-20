@@ -1,6 +1,6 @@
 ---
 title: "Activity 4"
-author: "Name"
+author: "Bella_MAHMOUD"
 output: github_document
 ---
 
@@ -33,7 +33,7 @@ Knit your report with the `message = FALSE` R code chunk option and pay attentio
 Now, switch this option to `message = TRUE` and knit your report again.
 Discuss what is different when the `message` option is turned on (`TRUE`) and turned off (`FALSE`) for the previous code chunk.
 
-**Response**:
+**Response**: when messages=false, it takes out information that may not be important to the reader. When messages=true, you get information on conflicts adm the packages that are attached. 
 
 
 Turn the `message` option off and continue in this activity.
@@ -60,7 +60,7 @@ I try to be consistent with notation so here are some other forms that you might
 - "*hint*"; for example, *arrange* the variable.
 - "**Specific Area**"; for example, **Environment** tab.
 
-```{r load_data, message=FALSE}
+```{r load_data, message=false}
 # Note that the :: method is redundant here
 # because we have already loaded the {tidyverse}
 # and {readr} is included in this.
@@ -77,7 +77,7 @@ You can view the entire dataset by clicking on the name of the data frame in the
 
 Explore and describe what the `message` option does in `load_data` code chunk.
 
-**Response**:
+**Response**: Looks about the same 
 
 
 Turn the `message` option off and continue in this activity.
@@ -122,7 +122,8 @@ Name this code chunk `college_grads_top`; you do not need to suppress messages.
 In this code chunk, type `college_recent_grads` to view the top few (first 10) entries of the dataset.
 
 ```{r}
-
+college_grads_top <- college_recent_grads
+arrange(college_grads_top, unemployment_rate)
 ```
 
 
@@ -168,6 +169,7 @@ Note that the ACS only asks [one question](https://www.census.gov/acs/www/about/
 ## Analysis
 
 ### Which major has the lowest unemployment rate?
+Mathematics has the lowest unemployment rate. It is tied with education, biology and life sciences, agriculture and natural resources,  and industrial arts and consumer services.
 
 #### Describe your process
 
@@ -176,7 +178,7 @@ Describe how you would go about answering this question using a different softwa
 You do not need to code anything.
 As you write this process, think of it as a series of steps and it might be helpful to start at the goal and work backwards.
 
-**Response**:
+**Response**: In SAS, you would have to modifiy the data step/ proc print. 
 
 
 #### Using `{dplyr}`
@@ -186,7 +188,8 @@ In the R code chunk below, name it `rearrange_college`.
 Take the `college_recent_grads` dataset, *then* `arrange` the dataset by `unemployment_rate`.
 
 ```{r}
-
+rearrange_college <- college_recent_grads
+arrange(rearrange_college, unemployment_rate)
 ```
 
 We have all of the information to answer our question (i.e., "Which major has the lowest unemployment rate?"), but it is not in an effective format.
@@ -199,7 +202,9 @@ Use the pipeline that you made in the `rearrange_college` code chunk as the star
 Name this code chunk `lowest_unemploy`.
 
 ```{r}
-
+lowest_unemploy <- rearrange_college
+arrange(lowest_unemploy, unemployment_rate)
+select(lowest_unemploy, rank, major, unemployment_rate)
 ```
 
 **Response**:
